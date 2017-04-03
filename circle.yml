@@ -7,8 +7,8 @@ test:
 #    - npm install -g karma-cli
   override:
     - npm run test:once
-#deployment:
-#  staging:
-#    branch: master
-#    heroku:
-#      appname: vbalas-todo-app    
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: angular2-tdd-circleci-heroku-integrated
