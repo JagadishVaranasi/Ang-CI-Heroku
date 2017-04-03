@@ -2,13 +2,13 @@ machine:
   node:
     version: 6.9.2
 test:
-  pre:
-    - npm install -g karma
-    - npm install -g karma-cli
+#  pre:
+#    - npm install -g karma
+#    - npm install -g karma-cli
   override:
     - npm run test:once
-deployment:
-  staging:
-    branch: master
-    heroku:
-      appname: vbalas-todo-app    
+#deployment:
+#  staging:
+#    branch: master
+#    heroku:
+#      appname: vbalas-todo-app    
