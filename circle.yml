@@ -1,0 +1,11 @@
+machine:
+  node:
+    version: 6.9.2
+test:
+  override:
+    - npm test --single-run
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: vbalas-todo-app    
