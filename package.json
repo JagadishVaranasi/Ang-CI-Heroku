@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Angular 2 Quickstart with Express and Heroku deployment",
   "engines": {
-    "node": "6.9.10"
+    "node": "6.9.4"
   },
   "scripts": {
     "build": "tsc -p src/",
