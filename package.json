@@ -23,7 +23,7 @@
     "pretest:once": "npm run build",
     "test:once": "karma start karma.conf.js --single-run",
     "lint": "tslint ./src/**/*.ts -t verbose",
-    "heroku-postbuild": "echo ---} Heroku Postbuild"
+    "heroku-postbuild": "npm run prestart"
   },
   "keywords": [],
   "author": "",
