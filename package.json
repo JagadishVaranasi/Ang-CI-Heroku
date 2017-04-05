@@ -20,9 +20,7 @@
     "pretest:once": "npm run build",
     "test:once": "karma start karma.conf.js --single-run",
     "lint": "tslint ./src/**/*.ts -t verbose",
-    "postinstall": "echo *** POST Install",
-    "preinstall": "echo *** Pre Install",
-    "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
+    // "heroku-prebuild": "npm run build",
     "heroku-postbuild": "npm run build"
   },
   "keywords": [],
