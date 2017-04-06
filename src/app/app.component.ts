@@ -4,4 +4,4 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   template: `<h1>Hello {{name}}</h1>`,
 })
-export class AppComponent  { name = 'Angular/Express/CircleCI/Heroku integration'; }
+export class AppComponent  { name = 'Angular CI/CD starter'; }
