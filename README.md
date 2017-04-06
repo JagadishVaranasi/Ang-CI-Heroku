@@ -9,26 +9,28 @@
 This starter project is built from [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html)
 
 It's been extended with testing support so you can start writing tests immediately.
+It has been extended to enable node integration. You can run as a node server also.
 
-**This is not the perfect arrangement for your application. It is not designed for production.
+This project integrates Angular 2 with Express. Focus is on integration with CI and CD.
 
-This project integrates Angular 2 with Express. 
+**This is not the perfect arrangement for your application. It is not designed for production.**
+
 
 It includes 
 
 * circle.yml file to run tests
-
 * Procfile for Heroku deployment
 
+You can use this quickstart code to begin your new development, write and run tests. When the code is committed, CircleCI 
+integration executes those tests and if they are successful then the app gets deployed to heroku. 
 
-
-We have connected this GitHub with CircleCI and heroku 
+Below steps gives the overview. 
 
 ## Getting started - Step 1 : Create a new project based on the QuickStart
 
 Clone this repo into new project folder (e.g., `my-proj`).
 ```shell
-git clone https://github.com/angular/quickstart  my-proj
+git clone https://github.com/vbalas/angular2-quickstart-tdd-circleci.git  my-proj
 cd my-proj
 ```
 
@@ -43,6 +45,7 @@ npm install
 npm start
 ```
 
+Make sure to install the necessary depedencies accordingly.
 
 The `npm start` command first compiles the application, 
 then simultaneously re-compiles and runs the `lite-server`.
@@ -56,6 +59,8 @@ You're ready to write your application.
 
 We've captured many of the most useful commands in npm scripts defined in the `package.json`:
 
+If you are working on angular components
+
 * `npm start` - runs the compiler and a server at the same time, both in "watch mode".
 * `npm run build` - runs the TypeScript compiler once.
 * `npm run build:w` - runs the TypeScript compiler in watch mode; the process keeps running, awaiting changes to TypeScript files and re-compiling when it sees them.
@@ -64,12 +69,14 @@ We've captured many of the most useful commands in npm scripts defined in the `p
 [Christopher Martin](https://github.com/cgmartin)
 with excellent support for Angular apps that use routing.
 
+Here are the other related scripts:
+* `node server` - runs the express server
+* `npm run watch` - runs the express server, watches for any changes made to the files, recompiles and restarts. Quite handy for development
+
 Here are the test related scripts:
 * `npm test` - compiles, runs and watches the karma unit tests
-* `npm run e2e` - compiles and run protractor e2e tests, written in Typescript (*e2e-spec.ts)
 * `npm run test:once` - compiles and run the karma unit tests just once
-* `node server` - Runs as a Node server
-* `npm run watch` - Runs the node server and watches for any changes made, recompiles and restarts. Quite handy for development
+
 
 ### Testing
 
@@ -99,7 +106,7 @@ We can update our app and our tests in real-time, keeping a weather eye on the c
 Karma is occasionally confused and it is often necessary to shut down its browser or even shut the command down (`Ctrl-C`) and
 restart it. No worries; it's pretty quick.
 
-#### End-to-end (E2E) Tests
+#### End-to-end (E2E) Tests - Ignore for now. 
 
 E2E tests are in the `e2e` directory, side by side with the `src` folder.
 Their filenames must end in `.e2e-spec.ts`.
@@ -122,29 +129,42 @@ Shut it down manually with `Ctrl-C`.
 
 ## Integration instructions
 
-Create a *remote repository* for this project on the service of your choice.
+### Setup
 
-Grab its address (e.g. *`https://github.com/<my-org>/my-proj.git`*) and push the *local repo* to the *remote*.
+* Create a *remote repository* for this project. Eg: `https://github.com/<my-org>/my-proj.git`
+
+* For CI (automated tests) login to your CircleCI and follow and configure to build the newly created repository. 
+
+* For CD (deployment), login to your heroku account. Create a new application of node type.
+
+* Configure heroku to pull code from GitHub repo : `https://github.com/<my-org>/my-proj.git`
+
+#### Enable automatic deployment
+
+Under automatic enable the option - [X] Wait for CI to pass before deploy
+
+**Enable Automatic Deploys**
+
+For more information about CircleCI and heroku integration refer to this [link] (https://circleci.com/docs/1.0/continuous-deployment-with-heroku/)
+
+### Actual development 
+
+* In your local keep working on your development activity.
+
+* Run your tests and make sure it is good to be commited.
+
+* **~~MUST~~** Before commiting, please **npm run build** to compile any changed ts files to js files
+
+Currenly .gitignore includes js to be pushed for deployment in heroku. 
+
+We are working on this to make the build during deployment itself. But as a workaround, please run **`npm run build`**
+
+Now Push the *local repo* to the *remote*.
+
 ```shell
 git remote add origin <repo-address>
 git push -u origin master
 ```
 
-Follow and configure to build the newly created repository in CircleCI. 
-
-Any commit in github will trigger a test in CircleCI. Later we can issue only for pull request or triggers. Good for now.
-
-Now for deployment, login to your heroku account. Create a new application of Node type.
-
-Configure heroku to pull code from GitHub repo : `https://github.com/<my-org>/my-proj.git`
-
-### Enable automatic deployment
-
-Under automatic enable the option [X] Wait for CI to pass before deploy 
-
-Enable Automatic Deploys 
-
-For more information about CircleCI and heroku integration refer to this [link] (https://circleci.com/docs/1.0/continuous-deployment-with-heroku/)
-
-
+* Any commit in github will trigger test run in CircleCI. But we can restrict to run tests only for pull request or triggers. Good for now.
 
