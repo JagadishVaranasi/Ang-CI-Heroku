@@ -9,7 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
-        this.name = 'Angular/Express/CircleCI/Heroku integration';
+        this.name = 'Angular CI/CD starter';
     }
     return AppComponent;
 }());
