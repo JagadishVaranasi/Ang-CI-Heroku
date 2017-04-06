@@ -1,53 +1,30 @@
-# Angular QuickStart Source - With TDD and Karma and Circle CI integration
+# Angular + Node + Express + CircleCI + Heroku - Starter Project
 
 [![CircleCI](https://circleci.com/gh/vbalas/angular2-quickstart-tdd-circleci.svg?style=svg)](https://circleci.com/gh/vbalas/angular2-quickstart-tdd-circleci)
 
 ![Heroku](https://heroku-badge.herokuapp.com/?app=angular2-tdd-circleci-heroku-i)
 
+**This is Work in progress**
 
-This repository holds the TypeScript source code of the [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html),
-the foundation for most of the documentation samples and potentially a good starting point for your application.
+This starter project is built from [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html)
 
 It's been extended with testing support so you can start writing tests immediately.
 
 **This is not the perfect arrangement for your application. It is not designed for production.
-It exists primarily to get you started quickly with learning and prototyping in Angular**
 
-We are unlikely to accept suggestions about how to grow this QuickStart into something it is not.
-Please keep that in mind before posting issues and PRs.
+This project integrates Angular 2 with Express. 
 
-## Updating to a newer version of the Quickstart Repo
+It includes 
 
-From time to time the QuickStart will add be enhanced with support for new features or to reflect
-changes to the [official Style Guide](https://angular.io/docs/ts/latest/guide/style-guide.html).
+* circle.yml file to run tests
 
-You can update your existing project to an up-to-date QuickStart by following these instructions:
-- Create a new project using the [instructions below](#create-a-new-project-based-on-the-quickstart)
-- Copy the code you have in your project's `main.ts` file onto `src/app/main.ts` in the new project
-- Copy your old `app` folder into `src/app`
-- Delete `src/app/main.ts` if you have one (we now use `src/main.ts` instead)
-- Copy your old `index.html`, `styles.css` and `tsconfig.json` into `src/`
-- Install all your third party dependencies
-- Copy your old `e2e/` folder into `e2e/`
-- Copy over any other files you added to your project
-- Copy your old `.git` folder into your new project's root
+* Procfile for Heroku deployment
 
-Now you can continue working on the new project.
 
-## Prerequisites
 
-Node.js and npm are essential to Angular development. 
-    
-<a href="https://docs.npmjs.com/getting-started/installing-node" target="_blank" title="Installing Node.js and updating npm">
-Get it now</a> if it's not already installed on your machine.
- 
-**Verify that you are running at least node `v4.x.x` and npm `3.x.x`**
-by running `node -v` and `npm -v` in a terminal/console window.
-Older versions produce errors.
+We have connected this GitHub with CircleCI and heroku 
 
-We recommend [nvm](https://github.com/creationix/nvm) for managing multiple versions of node and npm.
-
-## Create a new project based on the QuickStart
+## Getting started - Step 1 : Create a new project based on the QuickStart
 
 Clone this repo into new project folder (e.g., `my-proj`).
 ```shell
@@ -55,54 +32,7 @@ git clone https://github.com/angular/quickstart  my-proj
 cd my-proj
 ```
 
-We have no intention of updating the source on `angular/quickstart`.
-Discard the `.git` folder..
-```shell
-rm -rf .git  # OS/X (bash)
-rd .git /S/Q # windows
-```
-### Delete _non-essential_ files (optional)
-
-You can quickly delete the _non-essential_ files that concern testing and QuickStart repository maintenance
-(***including all git-related artifacts*** such as the `.git` folder and `.gitignore`!)
-by entering the following commands while in the project folder:
-
-##### OS/X (bash)
-```shell
-xargs rm -rf < non-essential-files.osx.txt
-rm src/app/*.spec*.ts
-rm non-essential-files.osx.txt
-```
-
-##### Windows
-```shell
-for /f %i in (non-essential-files.txt) do del %i /F /S /Q
-rd .git /s /q
-rd e2e /s /q
-```
-
-### Create a new git repo
-You could [start writing code](#start-development) now and throw it all away when you're done.
-If you'd rather preserve your work under source control, consider taking the following steps.
-
-Initialize this project as a *local git repo* and make the first commit:
-```shell
-git init
-git add .
-git commit -m "Initial commit"
-```
-
->Recover the deleted `.gitignore` from the QuickStart repository 
-if you lost it in the _Delete non-essential files_ step.
-
-Create a *remote repository* for this project on the service of your choice.
-
-Grab its address (e.g. *`https://github.com/<my-org>/my-proj.git`*) and push the *local repo* to the *remote*.
-```shell
-git remote add origin <repo-address>
-git push -u origin master
-```
-## Install npm packages
+### Install npm packages
 
 > See npm and nvm version notes above
 
@@ -113,7 +43,6 @@ npm install
 npm start
 ```
 
->Doesn't work in _Bash for Windows_ which does not support servers as of January, 2017.
 
 The `npm start` command first compiles the application, 
 then simultaneously re-compiles and runs the `lite-server`.
@@ -138,8 +67,11 @@ with excellent support for Angular apps that use routing.
 Here are the test related scripts:
 * `npm test` - compiles, runs and watches the karma unit tests
 * `npm run e2e` - compiles and run protractor e2e tests, written in Typescript (*e2e-spec.ts)
+* `npm run test:once` - compiles and run the karma unit tests just once
+* `node server` - Runs as a Node server
+* `npm run watch` - Runs the node server and watches for any changes made, recompiles and restarts. Quite handy for development
 
-## Testing
+### Testing
 
 The QuickStart documentation doesn't discuss testing.
 This repo adds both karma/jasmine unit test and protractor end-to-end testing support.
@@ -149,7 +81,7 @@ These tools are configured for specific conventions described below.
 *It is unwise and rarely possible to run the application, the unit tests, and the e2e tests at the same time.
 We recommend that you shut down one before starting another.*
 
-### Unit Tests
+#### Unit Tests
 TypeScript unit-tests are usually in the `src/app` folder. Their filenames must end in `.spec.ts`.
 
 Look for the example `src/app/app.component.spec.ts`.
@@ -167,7 +99,7 @@ We can update our app and our tests in real-time, keeping a weather eye on the c
 Karma is occasionally confused and it is often necessary to shut down its browser or even shut the command down (`Ctrl-C`) and
 restart it. No worries; it's pretty quick.
 
-### End-to-end (E2E) Tests
+#### End-to-end (E2E) Tests
 
 E2E tests are in the `e2e` directory, side by side with the `src` folder.
 Their filenames must end in `.e2e-spec.ts`.
@@ -187,8 +119,32 @@ which is easier to read; this file is excluded from source control.
 
 Shut it down manually with `Ctrl-C`.
 
-[travis-badge]: https://travis-ci.org/angular/quickstart.svg?branch=master
-[travis-badge-url]: https://travis-ci.org/angular/quickstart
+
+## Integration instructions
+
+Create a *remote repository* for this project on the service of your choice.
+
+Grab its address (e.g. *`https://github.com/<my-org>/my-proj.git`*) and push the *local repo* to the *remote*.
+```shell
+git remote add origin <repo-address>
+git push -u origin master
+```
+
+Follow and configure to build the newly created repository in CircleCI. 
+
+Any commit in github will trigger a test in CircleCI. Later we can issue only for pull request or triggers. Good for now.
+
+Now for deployment, login to your heroku account. Create a new application of Node type.
+
+Configure heroku to pull code from GitHub repo : `https://github.com/<my-org>/my-proj.git`
+
+### Enable automatic deployment
+
+Under automatic enable the option [X] Wait for CI to pass before deploy 
+
+Enable Automatic Deploys 
+
+For more information about CircleCI and heroku integration refer to this [link] (https://circleci.com/docs/1.0/continuous-deployment-with-heroku/)
 
 
 
