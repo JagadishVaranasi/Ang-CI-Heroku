@@ -4,9 +4,5 @@ machine:
 test:
   override:
     - npm run test:once
-deployment:
-  staging:
-    branch: master
-    heroku:
-      appname: angular2-tdd-circleci-heroku-i
+
 
