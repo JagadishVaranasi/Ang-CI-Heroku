@@ -1,4 +1,4 @@
-# Angular + Node + Express + CircleCI + Heroku - Starter Project
+# Angular + Node + Express + CircleCI + Heroku - Starter
 
 [![CircleCI](https://circleci.com/gh/vbalas/angular2-quickstart-tdd-circleci.svg?style=svg)](https://circleci.com/gh/vbalas/angular2-quickstart-tdd-circleci)
 
@@ -153,13 +153,13 @@ For more information about CircleCI and heroku integration refer to this [link] 
 
 * Run your tests and make sure it is good to be commited.
 
-* **~~MUST~~** Before commiting, please **npm run build** to compile any changed ts files to js files
+* **MUST DO Before commiting **, please **npm run build** to compile any changed ts files to js files
 
 Currenly .gitignore includes js to be pushed for deployment in heroku. 
 
 We are working on this to make the build during deployment itself. But as a workaround, please run **`npm run build`**
 
-Now Push the *local repo* to the *remote*.
+Commit your changes to *local repo* and push the *local repo* to the *remote*.
 
 ```shell
 git remote add origin <repo-address>
