@@ -4,4 +4,4 @@ import { Component } from '@angular/core';
   selector: 'my-app',
   templateUrl: './app.component.html',
 })
-export class AppComponent  { name = 'Angular CI/CD starter. Hope this works well. TemplateURL working..'; }
+export class AppComponent  { name = 'Angular2 CI/CD starter. Hope this works well. TemplateURL working..'; }
