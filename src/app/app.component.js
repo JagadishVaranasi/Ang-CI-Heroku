@@ -9,7 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
-        this.name = 'CI/CD starter. Hope this works well. TemplateURL working..';
+        this.name = 'Angular CI/CD starter. Hope this works well. TemplateURL working..';
     }
     return AppComponent;
 }());
