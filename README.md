@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/vbalas/angular2-quickstart-tdd-circleci.svg?style=svg)](https://circleci.com/gh/vbalas/angular2-quickstart-tdd-circleci)
 
-![Heroku](https://heroku-badge.herokuapp.com/?app=angular2-tdd-circleci-heroku-i)
+![Heroku](https://heroku-badge.herokuapp.com/?app=studio-angular2-seed)
 
 **This is Work in progress**
 
