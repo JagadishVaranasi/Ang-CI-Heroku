@@ -1,6 +1,6 @@
 {
   "name": "Node.js Sample",
   "description": "A barebones Node.js app using Express 4",
-  "repository": "https://github.com/JagadishVaranasi/Angular-Fundamental",
+  "repository": "https://github.com/JagadishVaranasi/Ang-CI-Heroku",
   "logo": "https://node-js-sample.herokuapp.com/node.png",
   "keywords": ["node", "express", "static"]
